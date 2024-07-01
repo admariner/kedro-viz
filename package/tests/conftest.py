@@ -17,8 +17,15 @@ from kedro_viz.api import apps
 from kedro_viz.data_access import DataAccessManager
 from kedro_viz.integrations.kedro.hooks import DatasetStatsHook
 from kedro_viz.integrations.kedro.sqlite_store import SQLiteStore
-from kedro_viz.models.flowchart import GraphNode
+from kedro_viz.models.flowchart import DataNodeMetadata, GraphNode
 from kedro_viz.server import populate_data
+
+
+@pytest.fixture
+def setup_kedro_project(tmp_path):
+    """Fixture to setup a temporary Kedro project directory structure."""
+    kedro_project_path = tmp_path / "kedro_project"
+    return kedro_project_path
 
 
 @pytest.fixture
@@ -350,3 +357,8 @@ def pipeline_with_data_sets_mock():
     pipeline = mock.MagicMock()
     pipeline.data_sets.return_value = ["model_inputs#csv"]
     return pipeline
+
+
+@pytest.fixture(autouse=True)
+def reset_is_all_previews_enabled():
+    DataNodeMetadata.is_all_previews_enabled = True
