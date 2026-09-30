@@ -58,7 +58,7 @@
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.9",
     "@mui/material": "^5.11.10",
-    "@mui/system": "^5.14.18",
+    "@mui/system": "^9.3.0",
     "@mui/x-tree-view": "^6.17.0",
     "@reduxjs/toolkit": "^2.8.2",
     "batching-toposort": "^1.2.0",
